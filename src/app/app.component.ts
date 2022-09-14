@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form } from '@angular/forms';
 import { Apollo, gql } from 'apollo-angular';
 import { map } from 'rxjs';
 import { User } from './user.model';
@@ -90,5 +91,8 @@ export class AppComponent implements OnInit {
         this.allusers = [user]
       })
     ).subscribe()
+  }
+  onSubmit(createUserForm: { value: any; }) {
+    console.log(createUserForm.value);
   }
 }
