@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
 import { Apollo, gql } from 'apollo-angular';
 import { map } from 'rxjs';
-import { User } from './user.model';
 
+// get all user
 const GET_USERS = gql`
 query Users {
   users {
@@ -31,6 +30,7 @@ query Users {
   }
 }
 `
+// get user by id
 const GET_USERBYID = gql`
 query User($userId: ID!) {
   user(id: $userId) {
@@ -60,6 +60,18 @@ query User($userId: ID!) {
   }
 }
 `
+// create user(mutation)
+const CREATE_USER = gql`
+mutation CreateUser($input: createUserInput!) {
+  createUser(input: $input) {
+    id
+    name
+    email
+    age
+    nationality
+  }
+}
+`
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -79,7 +91,6 @@ export class AppComponent implements OnInit {
     ).subscribe()
   }
   searchById() {
-    console.log(this.selectedId);
     this.apollo.watchQuery({
       query: GET_USERBYID,
       variables: {
@@ -93,6 +104,25 @@ export class AppComponent implements OnInit {
     ).subscribe()
   }
   onSubmit(createUserForm: { value: any; }) {
-    console.log(createUserForm.value);
+    const value = createUserForm.value
+    this.apollo.mutate({
+      mutation: CREATE_USER,
+      refetchQueries: [
+        {
+          query: GET_USERS
+        }
+      ],
+      variables: {
+        "input": {
+          "name": value.name,
+          "email": value.email,
+          "age": value.age,
+          "nationality": value.nationality
+        }
+      }
+    }).subscribe(() => {
+      console.log('created');
+    })
+
   }
 }
