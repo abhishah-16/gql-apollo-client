@@ -1,121 +1,155 @@
 <div class="container" style="margin-top:20px">
-  <form>
-    <div class="form-group">
-      <h4 class="bg-light">Search By ID :-</h4>
-      <div class="row">
-        <div class="col-md-8">
-          <input type="number" name="searchbyid" class="form-control" id="searchbyid" placeholder="" size="200px"
-            [(ngModel)]="selectedId" style="float:center">
+  <div class="form">
+    <div class="searchbyid">
+      <form>
+        <div class="form-group">
+          <h4 class="bg-light">Search By ID :-</h4>
+          <div class="row">
+            <div class="col-md-8">
+              <input type="number" name="searchbyid" class="form-control" id="searchbyid" placeholder="" size="200px"
+                [(ngModel)]="selectedId" style="float:center">
+            </div>
+            <div class="col-md-4">
+              <button (click)="searchById()" class="">Search</button>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <button (click)="searchById()" class="">Search</button>
-        </div>
-      </div>
+      </form>
     </div>
-  </form>
+  </div>
   <br>
-  <h4 class="bg-light">Create User :-</h4>
-  <form #createUserForm="ngForm" (ngSubmit)="onSubmit(createUserForm)" autocomplete="off">
-    <div class="form-group">
-      <input type="text" name="name" class="form-control" id="" placeholder="Enter Name" size="200px"
-        style="float:center" ngModel>
-      <br>
-      <div class="row">
-        <div class="col-md-8">
-          <input type="text" name="email" class="form-control" id="" placeholder="Enter Email" size="200px"
-            style="float:center" ngModel>
-        </div>
-        <div class="col-md-4">
-          <input type="number" name="age" class="form-control" id="" placeholder="Enter Age" size="200px"
-            style="float:center" ngModel>
-        </div>
+  <div class="form">
+    <div class="createuser">
+      <div class="template">
+        <form #createUserForm="ngForm" (ngSubmit)="onSubmit(createUserForm)" autocomplete="off">
+          <h4 class="bg-light">Create User :-</h4>
+          <div class="form-group">
+            <div class="input">
+              <input type="text" name="name" class="form-control" id="" placeholder="Enter Name" size="200px"
+                style="float:center" ngModel>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="input">
+                  <input type="text" name="email" class="form-control" id="" placeholder="Enter Email" size="200px"
+                    style="float:center" ngModel>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input">
+                  <input type="number" name="age" class="form-control" id="" placeholder="Enter Age" size="200px"
+                    style="float:center" ngModel>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="input">
+              <input type="text" name="nationality" class="form-control" id="" placeholder="Enter Nationality"
+                size="200px" style="float:center" ngModel>
+            </div>
+            <br>
+            <div class="button">
+              <button class="">Create</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <br>
-      <input type="text" name="nationality" class="form-control" id="" placeholder="Enter Nationality" size="200px"
-        style="float:center" ngModel>
-      <br>
-      <button class="">Create</button>
     </div>
-  </form>
+  </div>
 </div>
 <div class="container">
-  <table class="table table table-responsive" style="text-align: center;">
-    <thead>
-      <tr class="bg-danger">
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Age</th>
-        <th scope="col">Nationality</th>
-        <th scope="col">Friends</th>
-        <th scope="col">Favorite Movie</th>
-        <th scope="col">Favorite Book</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of allusers">
-        <td scope="row">{{user.id}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.age}}</td>
-        <td>{{user.nationality}}</td>
-        <td>
-          <table class="table table table-responsive shadow" style="width:100%">
-            <thead>
-              <tr class="bg-dark">
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let friend of user.friends;let i = index">
-                <td>{{friend.id}}</td>
-                <td>{{friend.name}}</td>
-                <td>{{friend.email}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td>
-          <table class="table table table-responsive shadow" style="width:100%">
-            <thead>
-              <tr class="bg-dark">
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Year</th>
-                <th scope="col">InTheater</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let movie of user.favoritemovies;let i  = index">
-                <td>{{movie.id}}</td>
-                <td>{{movie.name}}</td>
-                <td>{{movie.year}}</td>
-                <td>{{movie.inTheater}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td>
-          <table class="table table table-responsive shadow" style="width:100%">
-            <thead>
-              <tr class="bg-dark">
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Author</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let book of user.favoritebooks;let i  = index">
-                <td>{{book.id}}</td>
-                <td>{{book.name}}</td>
-                <td>{{book.author}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table">
+    <table class="table table table-responsive" style="text-align: center;">
+      <thead>
+        <tr class="bg-danger">
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Friends</th>
+          <th scope="col">Favorite Movie</th>
+          <th scope="col">Favorite Book</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allusers">
+          <td scope="row">{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.age}}</td>
+          <td>{{user.nationality}}</td>
+          <td>
+            <div class="table">
+              <div class="friends">
+                <table class="table table table-responsive shadow" style="width:100%">
+                  <thead>
+                    <tr class="bg-dark">
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let friend of user.friends;let i = index">
+                      <td>{{friend.id}}</td>
+                      <td>{{friend.name}}</td>
+                      <td>{{friend.email}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="table">
+              <div class="favoritemovies">
+                <table class="table table table-responsive shadow" style="width:100%">
+                  <thead>
+                    <tr class="bg-dark">
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Year</th>
+                      <th scope="col">InTheater</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let movie of user.favoritemovies;let i  = index">
+                      <td>{{movie.id}}</td>
+                      <td>{{movie.name}}</td>
+                      <td>{{movie.year}}</td>
+                      <td>{{movie.inTheater}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="table">
+              <div class="favoritebooks">
+                <table class="table table table-responsive shadow" style="width:100%">
+                  <thead>
+                    <tr class="bg-dark">
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Author</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let book of user.favoritebooks;let i  = index">
+                      <td>{{book.id}}</td>
+                      <td>{{book.name}}</td>
+                      <td>{{book.author}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
