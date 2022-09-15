@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-md-8">
               <input type="number" name="searchbyid" class="form-control" id="searchbyid" placeholder="" size="200px"
-                [(ngModel)]="selectedId" style="float:center">
+                [(ngModel)]="selectedId" style="float:center;color:#d9534f;font-weight: bolder;">
             </div>
             <div class="col-md-4">
               <button (click)="searchById()" class="">Search</button>
@@ -26,27 +26,27 @@
           <div class="form-group">
             <div class="input">
               <input type="text" name="name" class="form-control" id="" placeholder="Enter Name" size="200px"
-                style="float:center" ngModel>
+                style="float:center;color:#d9534f;font-weight: bolder;" ngModel>
             </div>
             <br>
             <div class="row">
               <div class="col-md-8">
                 <div class="input">
                   <input type="text" name="email" class="form-control" id="" placeholder="Enter Email" size="200px"
-                    style="float:center" ngModel>
+                    style="float:center;color:#d9534f;font-weight: bolder;" ngModel>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="input">
                   <input type="number" name="age" class="form-control" id="" placeholder="Enter Age" size="200px"
-                    style="float:center" ngModel>
+                    style="float:center;color:#d9534f;font-weight: bolder;" ngModel>
                 </div>
               </div>
             </div>
             <br>
             <div class="input">
               <input type="text" name="nationality" class="form-control" id="" placeholder="Enter Nationality"
-                size="200px" style="float:center" ngModel>
+                size="200px" style="float:center;color:#d9534f;font-weight: bolder;" ngModel>
             </div>
             <br>
             <div class="button">
@@ -89,6 +89,8 @@
                       <th scope="col">Id</th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
+                      <th scope="col">Age</th>
+                      <th scope="col">Nationality</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -96,6 +98,8 @@
                       <td>{{friend.id}}</td>
                       <td>{{friend.name}}</td>
                       <td>{{friend.email}}</td>
+                      <td>{{friend.age}}</td>
+                      <td>{{friend.nationality}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -135,6 +139,7 @@
                       <th scope="col">Id</th>
                       <th scope="col">Name</th>
                       <th scope="col">Author</th>
+                      <th scope="col">IsPublished</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -142,6 +147,7 @@
                       <td>{{book.id}}</td>
                       <td>{{book.name}}</td>
                       <td>{{book.author}}</td>
+                      <td>{{book.isPublished}}</td>
                     </tr>
                   </tbody>
                 </table>

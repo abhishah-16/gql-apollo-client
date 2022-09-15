@@ -15,6 +15,13 @@ query Users {
       id
       name
       email
+      age
+      nationality
+      friends{
+        id
+        name
+        email
+      }
     }
     favoritemovies {
       id
@@ -26,6 +33,7 @@ query Users {
       id
       name
       author
+      isPublished
     }
   }
 }
@@ -56,6 +64,7 @@ query User($userId: ID!) {
       id
       name
       author
+      isPublished
     }
   }
 }
@@ -106,7 +115,7 @@ export class AppComponent implements OnInit {
       })
     ).subscribe()
   }
-  
+
   onSubmit(createUserForm: { value: any; }) {
     const value = createUserForm.value
     this.apollo.mutate({
