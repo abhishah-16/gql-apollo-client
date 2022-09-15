@@ -80,7 +80,9 @@ mutation CreateUser($input: createUserInput!) {
 export class AppComponent implements OnInit {
   allusers: any = []
   selectedId = null
+
   constructor(private apollo: Apollo) { }
+
   ngOnInit(): void {
     this.apollo.watchQuery({
       query: GET_USERS
@@ -90,6 +92,7 @@ export class AppComponent implements OnInit {
       })
     ).subscribe()
   }
+
   searchById() {
     this.apollo.watchQuery({
       query: GET_USERBYID,
@@ -103,6 +106,7 @@ export class AppComponent implements OnInit {
       })
     ).subscribe()
   }
+  
   onSubmit(createUserForm: { value: any; }) {
     const value = createUserForm.value
     this.apollo.mutate({
@@ -123,6 +127,5 @@ export class AppComponent implements OnInit {
     }).subscribe(() => {
       console.log('created');
     })
-
   }
 }
